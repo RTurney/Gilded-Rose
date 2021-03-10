@@ -28,6 +28,7 @@ describe("Gilded Rose", () => {
     beforeEach(() => {
       item_list = [
         new Item("potion", 1, 1),
+        new Item("staleFood", 0, 9)
       ]
       gildedRose = new Shop(item_list);
       items = gildedRose.updateQuality();
@@ -41,6 +42,8 @@ describe("Gilded Rose", () => {
       expect(items[0].sellIn).toEqual(0);
     });
 
-
+    it('reduces the quality by 2 after sellIn date', () => {
+      expect(items[1].quality).toEqual(7);
+    });
   });
 });
