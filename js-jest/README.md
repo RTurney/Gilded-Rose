@@ -74,3 +74,11 @@ legendary item and as such its Quality is 80 and it never alters.
 ### Test brief
 
 Refactor the code in such a way that adding the 'conjured' functionality is easy.
+
+## Production notes
+
+* do **NOT** alter Items class
+* do **NOT** alter Items property
+* need to write tests to cover the whole code
+* refactor current code
+* add conjured feature 
