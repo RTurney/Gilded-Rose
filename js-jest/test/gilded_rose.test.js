@@ -31,7 +31,8 @@ describe("Gilded Rose", () => {
         new Item("staleFood", 0, 9),
         new Item("rottenBread", 0, 0),
         new Item("Aged Brie", 2, 0),
-        new Item("Sulfuras, Hand of Ragnaros", 0, 80)
+        new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+        new Item("Backstage passes to a TAFKAL80ETC concert", 11, 10)
       ]
       gildedRose = new Shop(item_list);
       items = gildedRose.updateQuality();
@@ -67,6 +68,10 @@ describe("Gilded Rose", () => {
     it('will not reduce Sulfuras value or sellIn date', () => {
       expect(items[4].quality).toEqual(80);
       expect(items[4].sellIn).toEqual(0);
+    });
+
+    it('increase the value of backstage passes as concert date approaches', () => {
+      expect(items[5].quality).toEqual(11)
     });
   });
 });
