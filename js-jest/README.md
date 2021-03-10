@@ -95,6 +95,7 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * ~~items have a quality value~~
 * ~~at the end of each day both values are lowered~~
 
+* updatequality reduces item's value 
 * Once the sellin date has passed, quality drops 2x faster
 * quality of an item cannot be negative
 * aged brie increases in quailty the older it gets
