@@ -3,6 +3,7 @@ const {Shop, Item} = require("../src/gilded_rose");
 describe("Gilded Rose", () => {
   let gildedRose;
   let items;
+  let item_list;
 
   describe("#items", () => {
     beforeEach(() => {
@@ -25,7 +26,10 @@ describe("Gilded Rose", () => {
 
   describe('#updateQuality', () => {
     beforeEach(() => {
-      gildedRose = new Shop([new Item("potion", 1, 1)]);
+      item_list = [
+        new Item("potion", 1, 1),
+      ]
+      gildedRose = new Shop(item_list);
       items = gildedRose.updateQuality();
     });
 
@@ -36,5 +40,7 @@ describe("Gilded Rose", () => {
     it('updates the sellIn date', () => {
       expect(items[0].sellIn).toEqual(0);
     });
+
+
   });
 });
