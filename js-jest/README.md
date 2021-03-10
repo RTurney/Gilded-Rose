@@ -84,6 +84,7 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * add conjured feature
 * updatequality reduces item's value
 * updateQuality updates sellIn date
+* updateQuality will not take an item's value below 0
 
 #### Tests in production
 
