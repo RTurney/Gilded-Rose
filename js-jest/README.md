@@ -85,12 +85,15 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 
 #### Tests in production
 
+* items have a sellin value
+* tems have a quality value
+* at the end of each day both values are lowered
 
 #### Tests to build
 
-* items have a sellin value
-* items have a quality value
-* at the end of each day both values are lowered
+* ~~items have a sellin value~~
+* ~~items have a quality value~~
+* ~~at the end of each day both values are lowered~~
 
 * Once the sellin date has passed, quality drops 2x faster
 * quality of an item cannot be negative
@@ -101,4 +104,4 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
   - increases by 10 when there are 10 days or less left
   - increases by 3 when there are 5 days or less left
 * backstage passes drop to 0 after the concert
-* conjured items decrease in value twice as fast as standard items 
+* conjured items decrease in value twice as fast as standard items
