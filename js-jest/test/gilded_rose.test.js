@@ -30,7 +30,8 @@ describe("Gilded Rose", () => {
         new Item("potion", 1, 1),
         new Item("staleFood", 0, 9),
         new Item("rottenBread", 0, 0),
-        new Item("Aged Brie", 2, 0)
+        new Item("Aged Brie", 2, 0),
+        new Item("Sulfuras, Hand of Ragnaros", 0, 80)
       ]
       gildedRose = new Shop(item_list);
       items = gildedRose.updateQuality();
@@ -61,6 +62,11 @@ describe("Gilded Rose", () => {
         items = gildedRose.updateQuality();
       }
       expect(items[3].quality).toEqual(50);
+    });
+
+    it('will not reduce Sulfuras value or sellIn date', () => {
+      expect(items[4].quality).toEqual(80);
+      expect(items[4].sellIn).toEqual(0);
     });
   });
 });
