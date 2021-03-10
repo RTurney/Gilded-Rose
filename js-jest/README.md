@@ -54,7 +54,7 @@ Pretty simple, right? Well this is where it gets interesting:
 	- "Aged Brie" actually increases in Quality the older it gets
 	- The Quality of an item is never more than 50
 	- "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
-	- "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
+	- "Backstage passes", [like aged brie], increases in Quality as its SellIn value approaches;
 	Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
 	Quality drops to 0 after the concert
 
@@ -84,13 +84,15 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * add conjured feature
 * updatequality reduces item's value
 * updateQuality updates sellIn date
-* updateQuality will not take an item's value below 0
+
 
 #### Tests in production
 
 * items have a sellin value
 * tems have a quality value
 * at the end of each day both values are lowered
+* Once the sellin date has passed, quality drops 2x faster
+* updateQuality will not take an item's value below 0
 
 #### Tests to build
 
@@ -100,8 +102,8 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 
 * ~~updatequality reduces item's value~~
 * ~~updateQuality updates sellIn date~~
-* Once the sellin date has passed, quality drops 2x faster
-* quality of an item cannot be negative
+* ~~Once the sellin date has passed, quality drops 2x faster~~
+* ~~quality of an item cannot be negative~~
 * aged brie increases in quailty the older it gets
 * quality of an item cannot be above 50
 * Sulfuras does not have to be sold and does not decrease in quality

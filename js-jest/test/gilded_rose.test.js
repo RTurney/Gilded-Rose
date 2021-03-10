@@ -29,7 +29,8 @@ describe("Gilded Rose", () => {
       item_list = [
         new Item("potion", 1, 1),
         new Item("staleFood", 0, 9),
-        new Item("rottenBread", 0, 0)
+        new Item("rottenBread", 0, 0),
+        new Item("Aged Brie", 2, 0)
       ]
       gildedRose = new Shop(item_list);
       items = gildedRose.updateQuality();
@@ -49,6 +50,10 @@ describe("Gilded Rose", () => {
 
     it('cannot reduce an items quality below 0', () => {
       expect(items[2].quality).toEqual(0);
+    });
+
+    it('increases the value of Aged brie each day', () => {
+      expect(items[3].quality).toEqual(1);
     });
   });
 });
