@@ -55,5 +55,12 @@ describe("Gilded Rose", () => {
     it('increases the value of Aged brie each day', () => {
       expect(items[3].quality).toEqual(1);
     });
+
+    it('will not allow an items value to go above 50', () => {
+      for (var i = 0; i < 60; i++) {
+        items = gildedRose.updateQuality();
+      }
+      expect(items[3].quality).toEqual(50);
+    });
   });
 });

@@ -93,6 +93,7 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * at the end of each day both values are lowered
 * Once the sellin date has passed, quality drops 2x faster
 * updateQuality will not take an item's value below 0
+* aged brie increases in quailty the older it gets
 
 #### Tests to build
 
@@ -104,7 +105,7 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * ~~updateQuality updates sellIn date~~
 * ~~Once the sellin date has passed, quality drops 2x faster~~
 * ~~quality of an item cannot be negative~~
-* aged brie increases in quailty the older it gets
+* ~~aged brie increases in quailty the older it gets~~
 * quality of an item cannot be above 50
 * Sulfuras does not have to be sold and does not decrease in quality
 * backstage passes increase in value close they get to sellin dates
