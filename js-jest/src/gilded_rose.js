@@ -23,6 +23,10 @@ class Shop {
     item.quality += 1;
   }
 
+  increaseQualityByTwo(item) {
+    item.quality += 2;
+  }
+
   sellInReducer(item) {
     item.sellIn -= 1;
   }
@@ -75,8 +79,7 @@ class Shop {
       this.qualityIncreaser(ticket);
       this.qualityIncreaser(ticket);
     } else if (ticket.sellIn < 11) {
-      this.qualityIncreaser(ticket);
-      this.qualityIncreaser(ticket);
+      this.increaseQualityByTwo(ticket);
     } else {
       this.qualityIncreaser(ticket);
     }
