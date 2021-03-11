@@ -15,6 +15,10 @@ class Shop {
     item.quality -= 1;
   }
 
+  reduceQualityToZero(item) {
+    item.quality = 0;
+  }
+
   qualityIncreaser(item) {
     item.quality += 1;
   }
@@ -23,8 +27,14 @@ class Shop {
     item.sellIn -= 1;
   }
 
-  reduceQualityToZero(item) {
-    item.quality = 0;
+  isPastSellIn(item) {
+    return item.sellIn <= 0;
+  }
+
+  updateSellIn(item) {
+    if (!this.isSulfuras(item)) {
+      this.sellInReducer(item);
+    }
   }
 
   isAgedBrie(item) {
@@ -55,9 +65,6 @@ class Shop {
     if (!this.isSulfuras(item) && this.isItemQualityAboveFifty(item)) {
       return item.quality = 50;
     }
-  }
-  isPastSellIn(item) {
-    return item.sellIn <= 0;
   }
 
   calculateTicketQuality(ticket) {
@@ -98,12 +105,6 @@ class Shop {
       }
     }
     this.setItemToMaxQuality(item);
-  }
-
-  updateSellIn(item) {
-    if (!this.isSulfuras(item)) {
-      this.sellInReducer(item);
-    }
   }
 
   updateQuality() {
