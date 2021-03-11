@@ -92,12 +92,12 @@ describe("Gilded Rose", () => {
         expect(items[6].quality).toEqual(4);
       });
 
-      // it('degrades in quailty 4x as fast after sellIn date', () => {
-      //   for (var i = 0; i < 3; i++) {
-      //     items = gildedRose.updateQuality();
-      //    }
-      //   expect(items[6].quality).toEqual(-4);
-      // });
+      it('degrades in quailty 4x as fast after sellIn date', () => {
+        for (var i = 0; i < 3; i++) {
+          items = gildedRose.updateQuality();
+         }
+        expect(items[6].quality).toEqual(-4);
+      });
     });
   });
 });
