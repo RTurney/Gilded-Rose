@@ -128,17 +128,20 @@ class Shop {
     }
   }
 
+  itemSorter(item) {
+    if (this.isAgedBrie(item)) {
+      this.calculateAgedBrieQuality(item);
+    } else if (this.isBackstagePass(item)) {
+      this.calculateTicketQuality(item);
+    } else if (this.isConjuredItem(item)) {
+      this.calculateConjuredQuality(item);
+    } else {
+      this.caclulateItemQuality(item);
+    }
+  }
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-      if (this.isAgedBrie(this.items[i])) {
-        this.calculateAgedBrieQuality(this.items[i]);
-      } else if (this.isBackstagePass(this.items[i])) {
-        this.calculateTicketQuality(this.items[i]);
-      } else if (this.isConjuredItem(this.items[i])) {
-        this.calculateConjuredQuality(this.items[i]);
-      } else {
-        this.caclulateItemQuality(this.items[i]);
-      }
+      this.itemSorter(this.items[i]);
       this.setItemToMaxQuality(this.items[i]);
       this.updateSellIn(this.items[i]);
     }
