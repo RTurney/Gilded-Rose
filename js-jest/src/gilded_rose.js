@@ -43,10 +43,7 @@ class Shop {
     item.sellIn -= 1;
   }
 
-  isPastSellIn(item) {
-    // single line?
-    return item.sellIn <= 0;
-  }
+  isPastSellIn(item) { return item.sellIn <= 0 }
 
   updateSellIn(item) {
     // refactor this. try const
@@ -83,7 +80,7 @@ class Shop {
   }
 
   isItemQualityAboveFifty(item) {
-    // single line? 
+    // single line?
     return item.quality > 50;
   }
 
