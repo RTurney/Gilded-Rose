@@ -23,6 +23,10 @@ class Shop {
     item.sellIn -= 1;
   }
 
+  reduceQualityToZero(item) {
+    item.quality = 0;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
@@ -60,7 +64,7 @@ class Shop {
               }
             }
           } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality;
+            this.reduceQualityToZero(this.items[i]);
           }
         } else {
           if (this.items[i].quality < 50) {
