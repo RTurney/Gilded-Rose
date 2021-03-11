@@ -13,7 +13,8 @@ describe("Gilded Rose", () => {
         new Item("rottenBread", 0, 0),
         new Item("Aged Brie", 1, 0),
         new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-        new Item("Backstage passes to a TAFKAL80ETC concert", 11, 10)
+        new Item("Backstage passes to a TAFKAL80ETC concert", 11, 10),
+        new Item("Conjured Mana Cake", 3, 6)
       ]
       gildedRose = new Shop(item_list);
       items = gildedRose.updateQuality();
@@ -82,6 +83,13 @@ describe("Gilded Rose", () => {
           items = gildedRose.updateQuality();
         }
         expect(items[5].quality).toEqual(0)
+      });
+    });
+
+    describe('Conjured items', () => {
+
+      it('degrades in value twice as fast', () => {
+        expect(items[6].quality).toEqual(4);
       });
     });
   });

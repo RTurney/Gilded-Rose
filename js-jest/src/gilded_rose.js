@@ -61,6 +61,11 @@ class Shop {
     return item.name === 'Sulfuras, Hand of Ragnaros';
   }
 
+  isConjuredItem(item) {
+    let wordsArray = item.name.split(' ')
+    return wordsArray.includes('Conjured');
+  }
+
   isItemQualityAboveZero(item) {
     return item.quality > 0;
   }
@@ -111,12 +116,15 @@ class Shop {
     }
   }
 
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       if (this.isAgedBrie(this.items[i])) {
         this.calculateAgedBrieQuality(this.items[i]);
       } else if (this.isBackstagePass(this.items[i])) {
         this.calculateTicketQuality(this.items[i]);
+      } else if (this.isConjuredItem(this.items[i])) {
+        this.reduceQualityByTwo(this.items[i]);
       } else {
         this.caclulateItemQuality(this.items[i]);
       }

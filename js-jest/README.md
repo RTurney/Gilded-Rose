@@ -80,7 +80,7 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * [x] do **NOT** alter Items class
 * [x] do **NOT** alter Items properties
 * [x] need to write tests to cover the whole code
-* [ ] refactor current code
+* [x] refactor current code
 * [ ] add test for conjured feature
 * [ ] add conjured feature
 
