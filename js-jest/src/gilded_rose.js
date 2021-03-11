@@ -65,7 +65,7 @@ class Shop {
               }
             }
             if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
+              if (this.isItemQualityBelowFifty(this.items[i])) {
                 this.qualityIncreaser(this.items[i]);
               }
             }
@@ -87,7 +87,7 @@ class Shop {
             this.reduceQualityToZero(this.items[i]);
           }
         } else {
-          if (this.items[i].quality < 50) {
+          if (this.isItemQualityBelowFifty(this.items[i])) {
             this.qualityIncreaser(this.items[i]);
           }
         }
