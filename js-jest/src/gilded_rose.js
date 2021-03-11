@@ -19,6 +19,10 @@ class Shop {
     item.quality -= 2;
   }
 
+  reduceQualityByFour(item) {
+    item.quality -= 4;
+  }
+
   reduceQualityToZero(item) {
     item.quality = 0;
   }
@@ -118,8 +122,7 @@ class Shop {
 
   calculateConjuredQuality(conjuredItem) {
     if (this.isPastSellIn(conjuredItem)) {
-      this.reduceQualityByTwo(conjuredItem);
-      this.reduceQualityByTwo(conjuredItem);
+      this.reduceQualityByFour(conjuredItem);
     } else {
       this.reduceQualityByTwo(conjuredItem);
     }
