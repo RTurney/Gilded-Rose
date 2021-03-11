@@ -5,26 +5,7 @@ describe("Gilded Rose", () => {
   let items;
   let item_list;
 
-  describe("#items", () => {
-    beforeEach(() => {
-      gildedRose = new Shop([new Item("foo", 0, 0)]);
-      items = gildedRose.items;
-    });
-
-    it('return their name', () => {
-      expect(items[0].name).toBe("foo");
-    });
-
-    it('return their sellIn date', () => {
-      expect(items[0].sellIn).toEqual(0);
-    });
-
-    it('return their quality', () => {
-      expect(items[0].quality).toEqual(0);
-    });
-  });
-
-  describe('#updateQuality', () => {
+  describe('.updateQuality', () => {
     beforeEach(() => {
       item_list = [
         new Item("potion", 1, 1),
@@ -54,10 +35,6 @@ describe("Gilded Rose", () => {
       expect(items[2].quality).toEqual(0);
     });
 
-    it('increases the value of Aged brie each day', () => {
-      expect(items[3].quality).toEqual(1);
-    });
-
     it('will not allow an items value to go above 50', () => {
       for (var i = 0; i < 60; i++) {
         items = gildedRose.updateQuality();
@@ -65,25 +42,33 @@ describe("Gilded Rose", () => {
       expect(items[3].quality).toEqual(50);
     });
 
-    it('will not reduce Sulfuras value or sellIn date', () => {
-      expect(items[4].quality).toEqual(80);
-      expect(items[4].sellIn).toEqual(0);
-    });
+    describe('special items', () => {
+      it('increases the value of Aged brie each day', () => {
+        expect(items[3].quality).toEqual(1);
+      });
 
-    it('increase the value of backstage passes as concert date approaches', () => {
-      expect(items[5].quality).toEqual(11)
+      it('will not reduce Sulfuras value or sellIn date', () => {
+        expect(items[4].quality).toEqual(80);
+        expect(items[4].sellIn).toEqual(0);
+      });
     });
+    
+    describe('backstage passes', () => {
+      it('increase the value as concert date approaches', () => {
+        expect(items[5].quality).toEqual(11)
+      });
 
-    it('increases the value of backstage passes by 2 when only 10 days are left ', () => {
-      items = gildedRose.updateQuality();
-      expect(items[5].quality).toEqual(13);
-    });
-
-    it('increases the value of backstage passes by 3 when only 5 days are left', () => {
-      for (var i = 0; i < 7; i++) {
+      it('increases the value by 2 when only 10 days are left ', () => {
         items = gildedRose.updateQuality();
-      }
-      expect(items[5].quality).toEqual(27)
+        expect(items[5].quality).toEqual(13);
+      });
+
+      it('increases the value by 3 when only 5 days are left', () => {
+        for (var i = 0; i < 7; i++) {
+          items = gildedRose.updateQuality();
+        }
+        expect(items[5].quality).toEqual(27)
+      });
     });
   });
 });
