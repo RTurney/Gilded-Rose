@@ -73,5 +73,10 @@ describe("Gilded Rose", () => {
     it('increase the value of backstage passes as concert date approaches', () => {
       expect(items[5].quality).toEqual(11)
     });
+
+    it('increases the value of backstage passes by 2 when only 10 days are left ', () => {
+      items = gildedRose.updateQuality();
+      expect(items[5].quality).toEqual(13);
+    });
   });
 });
