@@ -15,6 +15,10 @@ class Shop {
     item.quality -= 1;
   }
 
+  reduceQualityByTwo(item) {
+    item.quality -= 2;
+  }
+
   reduceQualityToZero(item) {
     item.quality = 0;
   }
@@ -101,8 +105,7 @@ class Shop {
     if (!this.isSulfuras(item)) {
       if (this.isItemQualityAboveZero(item)) {
         if (this.isPastSellIn(item)) {
-          this.qualityReducer(item);
-          this.qualityReducer(item);
+          this.reduceQualityByTwo(item);
         } else {
           this.qualityReducer(item);
         }
