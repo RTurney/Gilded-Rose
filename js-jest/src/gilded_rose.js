@@ -64,14 +64,14 @@ class Shop {
           }
         }
       }
-      if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+      if (!this.isSulfuras(this.items[i])) {
         this.sellInReducer(this.items[i]);
       }
       if (this.items[i].sellIn < 0) {
         if (!this.isAgedBrie(this.items[i])) {
           if (!this.isBackstagePass(this.items[i])) {
             if (this.items[i].quality > 0) {
-              if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+              if (!this.isSulfuras(this.items[i])) {
                 this.qualityReducer(this.items[i]);
               }
             }
