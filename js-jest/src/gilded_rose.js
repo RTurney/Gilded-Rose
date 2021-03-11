@@ -102,13 +102,11 @@ class Shop {
   }
 
   caclulateItemQuality(item) {
-    if (!this.isSulfuras(item)) {
-      if (this.isItemQualityAboveZero(item)) {
-        if (this.isPastSellIn(item)) {
-          this.reduceQualityByTwo(item);
-        } else {
-          this.qualityReducer(item);
-        }
+    if (!this.isSulfuras(item) && this.isItemQualityAboveZero(item)) {
+      if (this.isPastSellIn(item)) {
+        this.reduceQualityByTwo(item);
+      } else {
+        this.qualityReducer(item);
       }
     }
     this.setItemToMaxQuality(item);
