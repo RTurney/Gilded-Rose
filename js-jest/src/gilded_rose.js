@@ -51,6 +51,21 @@ class Shop {
     return item.sellIn < 0;
   }
 
+  calculateTicketPrice(ticket) {
+    if (ticket.sellIn < 6) {
+      this.qualityIncreaser(ticket);
+      this.qualityIncreaser(ticket);
+      this.qualityIncreaser(ticket);
+    } else if (ticket.sellIn < 11) {
+      this.qualityIncreaser(ticket);
+      this.qualityIncreaser(ticket);
+    } else if (this.isPastSellIn(ticket)) {
+      this.reduceQualityToZero(ticket);
+    } else {
+      this.qualityIncreaser(ticket);
+    }
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
 

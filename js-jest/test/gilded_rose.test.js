@@ -11,7 +11,7 @@ describe("Gilded Rose", () => {
         new Item("potion", 1, 1),
         new Item("staleFood", 0, 9),
         new Item("rottenBread", 0, 0),
-        new Item("Aged Brie", 2, 0),
+        new Item("Aged Brie", 1, 0),
         new Item("Sulfuras, Hand of Ragnaros", 0, 80),
         new Item("Backstage passes to a TAFKAL80ETC concert", 11, 10)
       ]
@@ -45,6 +45,11 @@ describe("Gilded Rose", () => {
     describe('special items', () => {
       it('increases the value of Aged brie each day', () => {
         expect(items[3].quality).toEqual(1);
+      });
+
+      it('increases brie by 2 if past sellIn', () => {
+        items = gildedRose.updateQuality();
+        expect(items[3].quality).toEqual(3);
       });
 
       it('will not reduce Sulfuras value or sellIn date', () => {
