@@ -48,11 +48,14 @@ class Shop {
   }
 
   isItemQualityAboveFifty(item) {
-    if (!this.isSulfuras(item) && item.quality > 50) {
+    return item.quality > 50;
+  }
+
+  setItemToMaxQuality(item) {
+    if (!this.isSulfuras(item) && this.isItemQualityAboveFifty(item)) {
       return item.quality = 50;
     }
   }
-
   isPastSellIn(item) {
     return item.sellIn <= 0;
   }
@@ -94,6 +97,7 @@ class Shop {
         }
       }
     }
+    this.setItemToMaxQuality(item);
   }
 
   updateSellIn(item) {
@@ -111,7 +115,7 @@ class Shop {
       } else {
         this.caclulateItemQuality(this.items[i]);
       }
-      this.isItemQualityAboveFifty(this.items[i]);
+      this.setItemToMaxQuality(this.items[i]);
       this.updateSellIn(this.items[i]);
     }
     return this.items;
