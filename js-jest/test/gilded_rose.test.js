@@ -52,7 +52,7 @@ describe("Gilded Rose", () => {
         expect(items[4].sellIn).toEqual(0);
       });
     });
-    
+
     describe('backstage passes', () => {
       it('increase the value as concert date approaches', () => {
         expect(items[5].quality).toEqual(11)
@@ -68,6 +68,13 @@ describe("Gilded Rose", () => {
           items = gildedRose.updateQuality();
         }
         expect(items[5].quality).toEqual(27)
+      });
+
+      it('drops to 0 after the concert date', () => {
+        for (var i = 0; i < 12; i++) {
+          items = gildedRose.updateQuality();
+        }
+        expect(items[5].quality).toEqual(0)
       });
     });
   });

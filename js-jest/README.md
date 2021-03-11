@@ -113,6 +113,6 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * ~~Sulfuras does not have to be sold and does not decrease in quality~~
 * backstage passes increase in value close they get to sellin dates
   - ~~increases by 2 when there are 10 days or less left~~
-  - increases by 3 when there are 5 days or less left
+  - ~~increases by 3 when there are 5 days or less left~~
 * backstage passes drop to 0 after the concert
 * conjured items decrease in value twice as fast as standard items
