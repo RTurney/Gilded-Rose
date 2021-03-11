@@ -44,10 +44,12 @@ class Shop {
   }
 
   isPastSellIn(item) {
+    // single line?
     return item.sellIn <= 0;
   }
 
   updateSellIn(item) {
+    // refactor this. try const
     if (!this.isSulfuras(item)) {
       this.sellInReducer(item);
     }
@@ -71,24 +73,29 @@ class Shop {
   }
 
   isItemQualityAboveZero(item) {
+    //single line?
     return item.quality > 0;
   }
 
   isItemQualityBelowFifty(item) {
+    // single line?
     return item.quality < 50;
   }
 
   isItemQualityAboveFifty(item) {
+    // single line? 
     return item.quality > 50;
   }
 
   setItemToMaxQuality(item) {
+    //constants here and remove return
     if (!this.isSulfuras(item) && this.isItemQualityAboveFifty(item)) {
       return item.quality = 50;
     }
   }
 
   calculateTicketQuality(ticket) {
+    // case statement here
     if (this.isPastSellIn(ticket)) {
       this.reduceQualityToZero(ticket);
     } else if (ticket.sellIn < 6) {
@@ -101,6 +108,7 @@ class Shop {
   }
 
   calculateAgedBrieQuality(agedBrie) {
+    // refactor here
     if (this.isItemQualityBelowFifty(agedBrie)) {
       if (this.isPastSellIn(agedBrie)) {
         this.increaseQualityByTwo(agedBrie);
@@ -111,6 +119,7 @@ class Shop {
   }
 
   caclulateItemQuality(item) {
+    // add constants here and single line return
     if (!this.isSulfuras(item) && this.isItemQualityAboveZero(item)) {
       if (this.isPastSellIn(item)) {
         this.reduceQualityByTwo(item);
@@ -129,6 +138,7 @@ class Shop {
   }
 
   itemSorter(item) {
+    // change this to a case statement
     if (this.isAgedBrie(item)) {
       this.calculateAgedBrieQuality(item);
     } else if (this.isBackstagePass(item)) {
