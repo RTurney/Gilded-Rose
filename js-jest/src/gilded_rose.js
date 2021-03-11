@@ -47,6 +47,10 @@ class Shop {
     return item.quality < 50;
   }
 
+  isPastSellIn(item) {
+    return item.sellIn < 0;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
@@ -75,7 +79,7 @@ class Shop {
       if (!this.isSulfuras(this.items[i])) {
         this.sellInReducer(this.items[i]);
       }
-      if (this.items[i].sellIn < 0) {
+      if (this.isPastSellIn(this.items[i])) {
         if (!this.isAgedBrie(this.items[i])) {
           if (!this.isBackstagePass(this.items[i])) {
             if (this.isItemQualityAboveZero(this.items[i])) {
