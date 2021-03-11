@@ -88,6 +88,12 @@ class Shop {
     }
   }
 
+  updateSellIn(item) {
+    if (!this.isSulfuras(item)) {
+      this.sellInReducer(item);
+    }
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
