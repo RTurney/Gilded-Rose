@@ -27,6 +27,10 @@ class Shop {
     item.quality += 2;
   }
 
+  increaseQualityByThree(item) {
+    item.quality += 3;
+  }
+
   sellInReducer(item) {
     item.sellIn -= 1;
   }
@@ -75,9 +79,7 @@ class Shop {
     if (this.isPastSellIn(ticket)) {
       this.reduceQualityToZero(ticket);
     } else if (ticket.sellIn < 6) {
-      this.qualityIncreaser(ticket);
-      this.qualityIncreaser(ticket);
-      this.qualityIncreaser(ticket);
+      this.increaseQualityByThree(ticket);
     } else if (ticket.sellIn < 11) {
       this.increaseQualityByTwo(ticket);
     } else {
@@ -88,8 +90,7 @@ class Shop {
   calculateAgedBrieQuality(agedBrie) {
     if (this.isItemQualityBelowFifty(agedBrie)) {
       if (this.isPastSellIn(agedBrie)) {
-        this.qualityIncreaser(agedBrie);
-        this.qualityIncreaser(agedBrie);
+        this.increaseQualityByTwo(agedBrie);
       } else {
         this.qualityIncreaser(agedBrie);
       }
