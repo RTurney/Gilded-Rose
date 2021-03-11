@@ -51,7 +51,7 @@ class Shop {
     return item.sellIn < 0;
   }
 
-  calculateTicketPrice(ticket) {
+  calculateTicketQuality(ticket) {
     if (ticket.sellIn < 6) {
       this.qualityIncreaser(ticket);
       this.qualityIncreaser(ticket);
@@ -63,6 +63,17 @@ class Shop {
       this.reduceQualityToZero(ticket);
     } else {
       this.qualityIncreaser(ticket);
+    }
+  }
+
+  calculateAgedBrieQuality(agedBrie) {
+    if (this.isItemQualityBelowFifty(agedBrie)) {
+      if (isPastSellIn(agedBrie)) {
+        this.qualityIncreaser(agedBrie);
+        this.qualityIncreaser(agedBrie);
+      } else {
+        this.qualityIncreaser(agedBrie);
+      }
     }
   }
 
