@@ -77,18 +77,19 @@ class Shop {
     }
   }
 
+  caclulateItemQuality(item) {
+    if (this.isItemQualityAboveZero(item)) {
+      if (this.isPastSellIn(item)) {
+        this.qualityReducer(item);
+        this.qualityReducer(item);
+      } else {
+        this.qualityReducer(item);
+      }
+    }
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-
-
-      // agedbrie increaser
-      // if (this.isAgedBrie(this.items[i])) {
-      //   if(this.isItemQualityBelowFifty(this.items[i])) {
-      //     this.qualityIncreaser(this.items[i]);
-      //   }
-      // }
-
-
       if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
         if (this.isItemQualityAboveZero(this.items[i])) {
           if (!this.isSulfuras(this.items[i])) {
