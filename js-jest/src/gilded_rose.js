@@ -43,6 +43,10 @@ class Shop {
     return item.quality > 0;
   }
 
+  isItemQualityBelowFifty(item) {
+    return item.quality < 50;
+  }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
@@ -52,11 +56,11 @@ class Shop {
           }
         }
       } else {
-        if (this.items[i].quality < 50) {
+        if (this.isItemQualityBelowFifty(this.items[i])) {
             this.qualityIncreaser(this.items[i]);
           if (this.isBackstagePass(this.items[i])) {
             if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
+              if (this.isItemQualityBelowFifty(this.items[i])) {
                 this.qualityIncreaser(this.items[i]);
               }
             }
