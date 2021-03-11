@@ -86,7 +86,7 @@ class Shop {
   caclulateItemQuality(item) {
     if (!this.isSulfuras(item)) {
       if (this.isItemQualityAboveZero(item)) {
-        if (this.isPastSellIn(item) || item.sellIn == 0) {
+        if (this.isPastSellIn(item)) {
           this.qualityReducer(item);
           this.qualityReducer(item);
         } else {
@@ -104,50 +104,6 @@ class Shop {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-      // if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
-      //   if (this.isItemQualityAboveZero(this.items[i])) {
-      //     if (!this.isSulfuras(this.items[i])) {
-      //       this.qualityReducer(this.items[i]);
-      //     }
-      //   }
-      // } else {
-      //   if (this.isItemQualityBelowFifty(this.items[i])) {
-      //       this.qualityIncreaser(this.items[i]);
-      //     if (this.isBackstagePass(this.items[i])) {
-      //       if (this.items[i].sellIn < 11) {
-      //         if (this.isItemQualityBelowFifty(this.items[i])) {
-      //           this.qualityIncreaser(this.items[i]);
-      //         }
-      //       }
-      //       if (this.items[i].sellIn < 6) {
-      //         if (this.isItemQualityBelowFifty(this.items[i])) {
-      //           this.qualityIncreaser(this.items[i]);
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
-      // if (!this.isSulfuras(this.items[i])) {
-      //   this.sellInReducer(this.items[i]);
-      // }
-      // if (this.isPastSellIn(this.items[i])) {
-      //   if (!this.isAgedBrie(this.items[i])) {
-      //     if (!this.isBackstagePass(this.items[i])) {
-      //       if (this.isItemQualityAboveZero(this.items[i])) {
-      //         if (!this.isSulfuras(this.items[i])) {
-      //           this.qualityReducer(this.items[i]);
-      //         }
-      //       }
-      //     } else {
-      //       this.reduceQualityToZero(this.items[i]);
-      //     }
-      //   } else {
-      //     if (this.isItemQualityBelowFifty(this.items[i])) {
-      //       this.qualityIncreaser(this.items[i]);
-      //     }
-      //   }
-      // }
-
       if (this.isAgedBrie(this.items[i])) {
         this.calculateAgedBrieQuality(this.items[i]);
       } else if (this.isBackstagePass(this.items[i])) {
@@ -155,8 +111,8 @@ class Shop {
       } else {
         this.caclulateItemQuality(this.items[i]);
       }
-      this.updateSellIn(this.items[i]);
       this.isItemQualityAboveFifty(this.items[i]);
+      this.updateSellIn(this.items[i]);
     }
     return this.items;
   }
