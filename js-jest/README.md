@@ -77,13 +77,13 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 
 ## Production notes
 
-* do **NOT** alter Items class
-* do **NOT** alter Items property
-* need to write tests to cover the whole code
-* refactor current code
-* add conjured feature
-* updatequality reduces item's value
-* updateQuality updates sellIn date
+* [x] do **NOT** alter Items class
+* [x] do **NOT** alter Items properties
+* [x] need to write tests to cover the whole code
+* [ ] refactor current code
+* [ ] add test for conjured feature
+* [ ] add conjured feature
+
 
 
 #### Tests in production
