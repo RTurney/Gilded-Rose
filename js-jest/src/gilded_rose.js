@@ -116,6 +116,14 @@ class Shop {
     }
   }
 
+  calculateConjuredQuality(conjuredItem) {
+    if (this.isPastSellIn(conjuredItem)) {
+      this.reduceQualityByTwo(conjuredItem);
+      this.reduceQualityByTwo(conjuredItem);
+    } else {
+      this.reduceQualityByTwo(conjuredItem);
+    }
+  }
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
@@ -124,7 +132,7 @@ class Shop {
       } else if (this.isBackstagePass(this.items[i])) {
         this.calculateTicketQuality(this.items[i]);
       } else if (this.isConjuredItem(this.items[i])) {
-        this.reduceQualityByTwo(this.items[i]);
+        this.calculateConjuredQuality(this.items[i]);
       } else {
         this.caclulateItemQuality(this.items[i]);
       }
