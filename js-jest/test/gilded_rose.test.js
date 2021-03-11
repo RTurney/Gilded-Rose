@@ -42,16 +42,18 @@ describe("Gilded Rose", () => {
       expect(items[3].quality).toEqual(50);
     });
 
-    describe('special items', () => {
-      it('increases the value of Aged brie each day', () => {
+    describe('Aged Brie', () => {
+      it('increases in quality each day', () => {
         expect(items[3].quality).toEqual(1);
       });
 
-      it('increases brie by 2 if past sellIn', () => {
+      it('increases quality by 2 if past sellIn', () => {
         items = gildedRose.updateQuality();
         expect(items[3].quality).toEqual(3);
       });
+    });
 
+    describe('Sulfuras', () => {
       it('will not reduce Sulfuras value or sellIn date', () => {
         expect(items[4].quality).toEqual(80);
         expect(items[4].sellIn).toEqual(0);
