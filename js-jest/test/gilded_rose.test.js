@@ -78,5 +78,12 @@ describe("Gilded Rose", () => {
       items = gildedRose.updateQuality();
       expect(items[5].quality).toEqual(13);
     });
+
+    it('increases the value of backstage passes by 3 when only 5 days are left', () => {
+      for (var i = 0; i < 7; i++) {
+        items = gildedRose.updateQuality();
+      }
+      expect(items[5].quality).toEqual(27)
+    });
   });
 });
