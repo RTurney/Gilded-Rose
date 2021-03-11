@@ -47,20 +47,26 @@ class Shop {
     return item.quality < 50;
   }
 
+  isItemQualityAboveFifty(item) {
+    if (!this.isSulfuras(item) && item.quality > 50) {
+      return item.quality = 50;
+    }
+  }
+
   isPastSellIn(item) {
-    return item.sellIn < 0;
+    return item.sellIn <= 0;
   }
 
   calculateTicketQuality(ticket) {
-    if (ticket.sellIn < 6) {
+    if (this.isPastSellIn(ticket)) {
+      this.reduceQualityToZero(ticket);
+    } else if (ticket.sellIn < 6) {
       this.qualityIncreaser(ticket);
       this.qualityIncreaser(ticket);
       this.qualityIncreaser(ticket);
     } else if (ticket.sellIn < 11) {
       this.qualityIncreaser(ticket);
       this.qualityIncreaser(ticket);
-    } else if (this.isPastSellIn(ticket)) {
-      this.reduceQualityToZero(ticket);
     } else {
       this.qualityIncreaser(ticket);
     }
@@ -68,7 +74,7 @@ class Shop {
 
   calculateAgedBrieQuality(agedBrie) {
     if (this.isItemQualityBelowFifty(agedBrie)) {
-      if (isPastSellIn(agedBrie)) {
+      if (this.isPastSellIn(agedBrie)) {
         this.qualityIncreaser(agedBrie);
         this.qualityIncreaser(agedBrie);
       } else {
@@ -78,12 +84,14 @@ class Shop {
   }
 
   caclulateItemQuality(item) {
-    if (this.isItemQualityAboveZero(item)) {
-      if (this.isPastSellIn(item)) {
-        this.qualityReducer(item);
-        this.qualityReducer(item);
-      } else {
-        this.qualityReducer(item);
+    if (!this.isSulfuras(item)) {
+      if (this.isItemQualityAboveZero(item)) {
+        if (this.isPastSellIn(item) || item.sellIn == 0) {
+          this.qualityReducer(item);
+          this.qualityReducer(item);
+        } else {
+          this.qualityReducer(item);
+        }
       }
     }
   }
@@ -96,49 +104,59 @@ class Shop {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-      if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
-        if (this.isItemQualityAboveZero(this.items[i])) {
-          if (!this.isSulfuras(this.items[i])) {
-            this.qualityReducer(this.items[i]);
-          }
-        }
+      // if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
+      //   if (this.isItemQualityAboveZero(this.items[i])) {
+      //     if (!this.isSulfuras(this.items[i])) {
+      //       this.qualityReducer(this.items[i]);
+      //     }
+      //   }
+      // } else {
+      //   if (this.isItemQualityBelowFifty(this.items[i])) {
+      //       this.qualityIncreaser(this.items[i]);
+      //     if (this.isBackstagePass(this.items[i])) {
+      //       if (this.items[i].sellIn < 11) {
+      //         if (this.isItemQualityBelowFifty(this.items[i])) {
+      //           this.qualityIncreaser(this.items[i]);
+      //         }
+      //       }
+      //       if (this.items[i].sellIn < 6) {
+      //         if (this.isItemQualityBelowFifty(this.items[i])) {
+      //           this.qualityIncreaser(this.items[i]);
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+      // if (!this.isSulfuras(this.items[i])) {
+      //   this.sellInReducer(this.items[i]);
+      // }
+      // if (this.isPastSellIn(this.items[i])) {
+      //   if (!this.isAgedBrie(this.items[i])) {
+      //     if (!this.isBackstagePass(this.items[i])) {
+      //       if (this.isItemQualityAboveZero(this.items[i])) {
+      //         if (!this.isSulfuras(this.items[i])) {
+      //           this.qualityReducer(this.items[i]);
+      //         }
+      //       }
+      //     } else {
+      //       this.reduceQualityToZero(this.items[i]);
+      //     }
+      //   } else {
+      //     if (this.isItemQualityBelowFifty(this.items[i])) {
+      //       this.qualityIncreaser(this.items[i]);
+      //     }
+      //   }
+      // }
+
+      if (this.isAgedBrie(this.items[i])) {
+        this.calculateAgedBrieQuality(this.items[i]);
+      } else if (this.isBackstagePass(this.items[i])) {
+        this.calculateTicketQuality(this.items[i]);
       } else {
-        if (this.isItemQualityBelowFifty(this.items[i])) {
-            this.qualityIncreaser(this.items[i]);
-          if (this.isBackstagePass(this.items[i])) {
-            if (this.items[i].sellIn < 11) {
-              if (this.isItemQualityBelowFifty(this.items[i])) {
-                this.qualityIncreaser(this.items[i]);
-              }
-            }
-            if (this.items[i].sellIn < 6) {
-              if (this.isItemQualityBelowFifty(this.items[i])) {
-                this.qualityIncreaser(this.items[i]);
-              }
-            }
-          }
-        }
+        this.caclulateItemQuality(this.items[i]);
       }
-      if (!this.isSulfuras(this.items[i])) {
-        this.sellInReducer(this.items[i]);
-      }
-      if (this.isPastSellIn(this.items[i])) {
-        if (!this.isAgedBrie(this.items[i])) {
-          if (!this.isBackstagePass(this.items[i])) {
-            if (this.isItemQualityAboveZero(this.items[i])) {
-              if (!this.isSulfuras(this.items[i])) {
-                this.qualityReducer(this.items[i]);
-              }
-            }
-          } else {
-            this.reduceQualityToZero(this.items[i]);
-          }
-        } else {
-          if (this.isItemQualityBelowFifty(this.items[i])) {
-            this.qualityIncreaser(this.items[i]);
-          }
-        }
-      }
+      this.updateSellIn(this.items[i]);
+      this.isItemQualityAboveFifty(this.items[i]);
     }
     return this.items;
   }
