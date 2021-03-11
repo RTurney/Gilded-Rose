@@ -32,17 +32,21 @@ class Shop {
   }
 
   isBackstagePass(item) {
-    return item.name === 'Backstage passes to a TAFKAL80ETC concert'
+    return item.name === 'Backstage passes to a TAFKAL80ETC concert';
   }
 
   isSulfuras(item) {
-    return item.name === 'Sulfuras, Hand of Ragnaros'
+    return item.name === 'Sulfuras, Hand of Ragnaros';
+  }
+
+  isItemQualityAboveZero(item) {
+    return item.quality > 0;
   }
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       if (!this.isAgedBrie(this.items[i]) && !this.isBackstagePass(this.items[i])) {
-        if (this.items[i].quality > 0) {
+        if (this.isItemQualityAboveZero(this.items[i])) {
           if (!this.isSulfuras(this.items[i])) {
             this.qualityReducer(this.items[i]);
           }
