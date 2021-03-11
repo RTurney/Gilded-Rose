@@ -109,7 +109,6 @@ class Shop {
         this.qualityReducer(item);
       }
     }
-    this.setItemToMaxQuality(item);
   }
 
   updateQuality() {
