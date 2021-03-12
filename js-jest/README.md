@@ -90,17 +90,18 @@ At this application's current status, I have developed a full test suite for the
 #### Tests in production
 
 * items have a sellin value
-* tems have a quality value
+* items have a quality value
 * at the end of each day both values are lowered
 * Once the sellin date has passed, quality drops 2x faster
 * updateQuality will not take an item's value below 0
 * aged brie increases in quailty the older it gets
 * quality of an item cannot be above 50
 * Sulfuras does not have to be sold and does not decrease in quality
-* backstage passes increase in value close they get to sellin dates
+* backstage passes increase in value the closer they get to sellin dates
   - increases by 2 when there are 10 days or less left
   - increases by 3 when there are 5 days or less left
 * backstage passes drop to 0 after the concert
+* conjured items decreae in quality at double the rate
 
 There are two test suites, with 17 tests.
 Currently this code passes all tests with 100% coverage
@@ -109,10 +110,12 @@ Currently this code passes all tests with 100% coverage
 
 #### Tests to build
 
+Items:
 * ~~items have a sellin value~~
 * ~~items have a quality value~~
 * ~~at the end of each day both values are lowered~~
 
+UpdateQuality:
 * ~~updatequality reduces item's value~~
 * ~~updateQuality updates sellIn date~~
 * ~~Once the sellin date has passed, quality drops 2x faster~~
@@ -120,7 +123,7 @@ Currently this code passes all tests with 100% coverage
 * ~~aged brie increases in quailty the older it gets~~
 * ~~quality of an item cannot be above 50~~
 * ~~Sulfuras does not have to be sold and does not decrease in quality~~
-* backstage passes increase in value close they get to sellin dates
+* ~~backstage passes increase in value close they get to sellin dates~~
   - ~~increases by 2 when there are 10 days or less left~~
   - ~~increases by 3 when there are 5 days or less left~~
 * ~~backstage passes drop to 0 after the concert~~
