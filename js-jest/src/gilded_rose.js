@@ -43,11 +43,14 @@ class Shop {
     item.sellIn -= 1;
   }
 
-  isPastSellIn(item) { return item.sellIn <= 0 }
+  isPastSellIn(item) {
+    return item.sellIn <= 0;
+  }
 
   updateSellIn(item) {
-    // refactor this. try const
-    if (!this.isSulfuras(item)) {
+    const isNotSulfuras = !this.isSulfuras(item)
+
+    if (isNotSulfuras) {
       this.sellInReducer(item);
     }
   }
@@ -70,24 +73,21 @@ class Shop {
   }
 
   isItemQualityAboveZero(item) {
-    //single line?
     return item.quality > 0;
   }
 
   isItemQualityBelowFifty(item) {
-    // single line?
     return item.quality < 50;
   }
 
   isItemQualityAboveFifty(item) {
-    // single line?
     return item.quality > 50;
   }
 
   setItemToMaxQuality(item) {
     //constants here and remove return
     if (!this.isSulfuras(item) && this.isItemQualityAboveFifty(item)) {
-      return item.quality = 50;
+       item.quality = 50;
     }
   }
 
@@ -115,7 +115,7 @@ class Shop {
     }
   }
 
-  caclulateItemQuality(item) {
+  calculateItemQuality(item) {
     // add constants here and single line return
     if (!this.isSulfuras(item) && this.isItemQualityAboveZero(item)) {
       if (this.isPastSellIn(item)) {
@@ -135,7 +135,7 @@ class Shop {
   }
 
   itemSorter(item) {
-    // change this to a case statement
+
     if (this.isAgedBrie(item)) {
       this.calculateAgedBrieQuality(item);
     } else if (this.isBackstagePass(item)) {
@@ -143,9 +143,10 @@ class Shop {
     } else if (this.isConjuredItem(item)) {
       this.calculateConjuredQuality(item);
     } else {
-      this.caclulateItemQuality(item);
+      this.calculateItemQuality(item);
     }
   }
+
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       this.itemSorter(this.items[i]);
