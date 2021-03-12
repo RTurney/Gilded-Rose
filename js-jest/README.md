@@ -105,7 +105,7 @@ At this application's current status, I have developed a full test suite for the
 There are two test suites, with 17 tests.
 Currently this code passes all tests with 100% coverage
 
-<img src="public/Tests_and_coverage.png"
+<img src="public/Tests_and_coverage.png">
 
 #### Tests to build
 
