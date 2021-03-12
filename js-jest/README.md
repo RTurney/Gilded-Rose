@@ -84,7 +84,7 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * [x] add test for conjured feature
 * [x] add conjured feature
 
-At this application's current status, I have developed a full test suite for the Shop and Item classes. I have also refactored the code while keeping its outcome working in the same way. I have now implemented a checker for 'conjured' items and doubled their decrease in quality compared to normal items. 
+At this application's current status, I have developed a full test suite for the Shop and Item classes. I have also refactored the code while keeping its outcome working in the same way. I have now implemented a checker for 'conjured' items and doubled their decrease in quality compared to normal items.
 
 
 #### Tests in production
@@ -102,6 +102,10 @@ At this application's current status, I have developed a full test suite for the
   - increases by 3 when there are 5 days or less left
 * backstage passes drop to 0 after the concert
 
+There are two test suites, with 17 tests.
+Currently this code passes all tests with 100% coverage
+
+<img src="public/Tests_and_coverage.png"
 
 #### Tests to build
 
