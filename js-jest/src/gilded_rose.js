@@ -85,14 +85,15 @@ class Shop {
   }
 
   setItemToMaxQuality(item) {
-    //constants here and remove return
-    if (!this.isSulfuras(item) && this.isItemQualityAboveFifty(item)) {
+    const isNotSulfuras = !this.isSulfuras(item);
+    const qualityIsAboveFifty = this.isItemQualityAboveFifty(item);
+
+    if (isNotSulfuras && qualityIsAboveFifty) {
        item.quality = 50;
     }
   }
 
   calculateTicketQuality(ticket) {
-    // case statement here
     if (this.isPastSellIn(ticket)) {
       this.reduceQualityToZero(ticket);
     } else if (ticket.sellIn < 6) {
@@ -105,14 +106,11 @@ class Shop {
   }
 
   calculateAgedBrieQuality(agedBrie) {
-    // refactor here
-    if (this.isItemQualityBelowFifty(agedBrie)) {
       if (this.isPastSellIn(agedBrie)) {
         this.increaseQualityByTwo(agedBrie);
       } else {
         this.qualityIncreaser(agedBrie);
       }
-    }
   }
 
   calculateItemQuality(item) {
@@ -135,15 +133,16 @@ class Shop {
   }
 
   itemSorter(item) {
-
-    if (this.isAgedBrie(item)) {
-      this.calculateAgedBrieQuality(item);
-    } else if (this.isBackstagePass(item)) {
-      this.calculateTicketQuality(item);
-    } else if (this.isConjuredItem(item)) {
-      this.calculateConjuredQuality(item);
-    } else {
-      this.calculateItemQuality(item);
+    if (this.isItemQualityBelowFifty(item)) {
+      if (this.isAgedBrie(item)) {
+        this.calculateAgedBrieQuality(item);
+      } else if (this.isBackstagePass(item)) {
+        this.calculateTicketQuality(item);
+      } else if (this.isConjuredItem(item)) {
+        this.calculateConjuredQuality(item);
+      } else {
+        this.calculateItemQuality(item);
+      }
     }
   }
 
