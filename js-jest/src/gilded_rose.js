@@ -114,8 +114,10 @@ class Shop {
   }
 
   calculateItemQuality(item) {
-    // add constants here and single line return
-    if (!this.isSulfuras(item) && this.isItemQualityAboveZero(item)) {
+    const isNotSulfuras = !this.isSulfuras(item);
+    const qualityIsAboveZero = this.isItemQualityAboveZero(item);
+
+    if (isNotSulfuras && qualityIsAboveZero) {
       if (this.isPastSellIn(item)) {
         this.reduceQualityByTwo(item);
       } else {
