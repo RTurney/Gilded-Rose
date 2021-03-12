@@ -84,6 +84,10 @@ class Shop {
     return item.quality > 50;
   }
 
+  isFiveDaysToConcert(ticket) {
+    return ticket.sellIn <= 5;
+  }
+
   setItemToMaxQuality(item) {
     const isNotSulfuras = !this.isSulfuras(item);
     const qualityIsAboveFifty = this.isItemQualityAboveFifty(item);
@@ -96,7 +100,7 @@ class Shop {
   calculateTicketQuality(ticket) {
     if (this.isPastSellIn(ticket)) {
       this.reduceQualityToZero(ticket);
-    } else if (ticket.sellIn < 6) {
+    } else if (this.isFiveDaysToConcert(ticket)) {
       this.increaseQualityByThree(ticket);
     } else if (ticket.sellIn < 11) {
       this.increaseQualityByTwo(ticket);
