@@ -105,11 +105,11 @@ class Shop {
     if (this.isPastSellIn(ticket)) {
       this.reduceQualityToZero(ticket);
     } else {
-      this.ticketIncreaseQuality(ticket);
+      this.increaseTicketQuality(ticket);
     }
   }
 
-  ticketIncreaseQuality(ticket){
+  increaseTicketQuality(ticket){
     if (this.isFiveDaysToConcert(ticket)) {
       this.increaseQualityByThree(ticket);
     } else if (this.isTenDaysToConcert(ticket)) {
