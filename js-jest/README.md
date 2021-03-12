@@ -81,9 +81,10 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
 * [x] do **NOT** alter Items properties
 * [x] need to write tests to cover the whole code
 * [x] refactor current code
-* [ ] add test for conjured feature
-* [ ] add conjured feature
+* [x] add test for conjured feature
+* [x] add conjured feature
 
+At this application's current status, I have developed a full test suite for the Shop and Item classes. I have also refactored the code while keeping its outcome working in the same way. I have now implemented a checker for 'conjured' items and doubled their decrease in quality compared to normal items. 
 
 
 #### Tests in production
@@ -119,4 +120,4 @@ Refactor the code in such a way that adding the 'conjured' functionality is easy
   - ~~increases by 2 when there are 10 days or less left~~
   - ~~increases by 3 when there are 5 days or less left~~
 * ~~backstage passes drop to 0 after the concert~~
-* conjured items decrease in value twice as fast as standard items
+* ~~conjured items decrease in value twice as fast as standard items~~
