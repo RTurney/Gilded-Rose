@@ -10,9 +10,9 @@ class GildedRose(object):
 
     def update_quality(self):
         for item in self.items:
-            if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
+            if self.is_not_brie_checker(item) and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 if item.quality > 0:
-                    if item.name != "Sulfuras, Hand of Ragnaros":
+                    if self.is_not_sulfuras_checker(item):
                         self.quality_decreaser(item)
             else:
                 if item.quality < 50:
@@ -24,10 +24,10 @@ class GildedRose(object):
                         if item.sell_in < 6:
                             if item.quality < 50:
                                 self.quality_increaser(item)
-            if item.name != "Sulfuras, Hand of Ragnaros":
-                self.item_sell_in_reducer(item)
+            if self.is_not_sulfuras_checker(item):
+                self.reduce_sell_in(item)
             if item.sell_in < 0:
-                if item.name != "Aged Brie":
+                if self.is_not_brie_checker(item):
                     if item.name != "Backstage passes to a TAFKAL80ETC concert":
                         if item.quality > 0:
                             if item.name != "Sulfuras, Hand of Ragnaros":
@@ -36,7 +36,7 @@ class GildedRose(object):
                         item.quality = item.quality - item.quality
                 else:
                     if item.quality < 50:
-                        item.quality = item.quality + 1
+                        self.quality_increaser(item)
 
     def quality_decreaser(self, item):
         item.quality -= 1
@@ -44,5 +44,13 @@ class GildedRose(object):
     def quality_increaser(self, item):
         item.quality += 1
 
-    def item_sell_in_reducer(self, item):
+    def reduce_sell_in(self, item):
         item.sell_in -= 1
+
+    def is_not_sulfuras_checker(self, item):
+        if item.name != "Sulfuras, Hand of Ragnaros":
+            return True
+
+    def  is_not_brie_checker(self, item):
+        if item.name != "Aged Brie":
+            return True
