@@ -25,7 +25,7 @@ class GildedRose(object):
                             if item.quality < 50:
                                 self.quality_increaser(item)
             if item.name != "Sulfuras, Hand of Ragnaros":
-                item.sell_in = item.sell_in - 1
+                self.item_sell_in_reducer(item)
             if item.sell_in < 0:
                 if item.name != "Aged Brie":
                     if item.name != "Backstage passes to a TAFKAL80ETC concert":
@@ -43,3 +43,6 @@ class GildedRose(object):
 
     def quality_increaser(self, item):
         item.quality += 1
+
+    def item_sell_in_reducer(self, item):
+        item.sell_in -= 1
