@@ -7,7 +7,7 @@ from item import Item
 
 class GildedRoseTest(unittest.TestCase):
     def test_foo(self):
-        items = [Item("foo", 0, 0)]
+        items = [Item("foo", 0, 1)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual("foo", items[0].name)
