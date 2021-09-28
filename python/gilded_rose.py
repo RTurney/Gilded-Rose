@@ -51,6 +51,6 @@ class GildedRose(object):
         if item.name != "Sulfuras, Hand of Ragnaros":
             return True
 
-    def  is_not_brie_checker(self, item):
+    def is_not_brie_checker(self, item):
         if item.name != "Aged Brie":
             return True
